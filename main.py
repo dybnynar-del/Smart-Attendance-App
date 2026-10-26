@@ -1,5 +1,19 @@
- import streamlit as st
+import sqlite3
+import streamlit as st
 import project
+
+st.write(
+    sqlite3.connect("attendance.db")
+    .execute("SELECT name FROM sqlite_master WHERE type='table'")
+    .fetchall(),
+)
+st.write(
+    sqlite3.connect("attendance.db")
+    .execute("SELECT * FROM attendance")
+    .fetchall(),
+)
+ 
+st.title("Smart Attendance System 🏫")
 
 st.title("Smart Attendance System 🏫")
 st.write("مرحباً بكِ في نظام تسجيل الحضور الذكي - جامعة البعث")
