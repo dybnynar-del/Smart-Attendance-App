@@ -15,4 +15,10 @@ if choice == "Student Portal":
 
 elif choice == "Teacher Portal":
   st.subheader("بوابة المعلم وقاعدة البيانات")
+  import sqlite3
+  
+conn = sqlite3.connect("attendance.db")
+st.write(conn.execute("SELECT * FROM attendance").fetchall())
+conn.close()
+  
   
