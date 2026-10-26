@@ -2,7 +2,7 @@ import sqlite3
 
 conn = sqlite3.connect('attendance.db')
 cursor = conn.cursor()
-cursor.execute('''
+cursor.execute("""
 CREATE TABLE IF NOT EXISTS attendance (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS attendance (
     time TEXT,
     UNIQUE(name, date)
 )
-''')
+""")
 
 conn.commit()
 conn.close()
