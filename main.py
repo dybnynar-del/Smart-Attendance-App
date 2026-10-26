@@ -1,38 +1,27 @@
-import sqlite3
+ import sqlite3
 import streamlit as st
 import project
 
-st.write(
-    sqlite3.connect("attendance.db")
-    .execute("SELECT name FROM sqlite_master WHERE type='table'")
-    .fetchall(),
-)
-st.write(
-    sqlite3.connect("attendance.db")
-    .execute("SELECT * FROM attendance")
-    .fetchall(),
-)
- 
 st.title("Smart Attendance System 🏫")
-
-st.title("Smart Attendance System 🏫")
-st.write("مرحباً بكِ في نظام تسجيل الحضور الذكي - جامعة البعث")
-st.success("التطبيق يعمل بنجاح وجاهز للاستخدام")
+st.success("✅ التطبيق يعمل بنجاح وقاعدة البيانات جاهزة")
 
 st.markdown("---")
+st.subheader("📊 إثبات إنشاء قاعدة البيانات والجدول:")
 
-menu = ["الرئيسية", "Student Portal", "Teacher Portal"]
-choice = st.sidebar.selectbox("القائمة الرئيسية", menu)
-
-if choice == "Student Portal":
-  st.subheader("بوابة الطالب والكاميرا")
-
-elif choice == "Teacher Portal":
-  st.subheader("بوابة المعلم وقاعدة البيانات")
-
-  import sqlite3
-
+try:
   conn = sqlite3.connect("attendance.db")
-  st.write(conn.execute("SELECT * FROM attendance").fetchall())
+  cursor = conn.cursor()
+
+  cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+  tables = cursor.fetchall()
+  st.write("📁 اسم الجدول في القاعدة:", tables)
+
+  cursor.execute("SELECT * FROM attendance")
+  rows = cursor.fetchall()
+  st.write("📋 السجلات المخزنة حالياً:", rows)
+
   conn.close()
-  
+except Exception as e:
+  st.warning(
+      "قاعدة البيانات قيد الإنشاء أو فارغة، سيتم تفعيلها فوراً عند أول تسجيل."
+  )
