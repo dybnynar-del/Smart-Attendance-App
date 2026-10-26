@@ -2,7 +2,7 @@ import streamlit as st
 import project
 
 st.title("Smart Attendance System 📸")
-st.write("مرحباً بكِ في نظام تسجيل الحضور الذكي - جامعة البعث")
+st.write("مرحباً بك في نظام تسجيل الحضور الذكي - جامعة البعث")
 st.success("التطبيق يعمل بنجاح وجاهز للاستخدام")
 
 st.markdown("---")
