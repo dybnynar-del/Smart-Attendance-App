@@ -1,5 +1,5 @@
-import os
+import streamlit as st
 
-print("=== Smart Attendance System ===")
-print("Opening Camera Feed...")
-#os.system("start microsoft.windows.camera:")
+st.title("Smart Attendance System 📸")
+st.write("مرحباً بكِ في نظام تسجيل الحضور الذكي - جامعة البعث")
+st.success("التطبيق يعمل بنجاح وجاهز للاستخدام!")
